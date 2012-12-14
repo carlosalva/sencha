@@ -11,12 +11,31 @@ Ext.define('MyApp.view.Home', {
 		html: [
 			'<img src="http://staging.sencha.com/img/sencha.png" />',
 			'<h1>Welcome to Sencha Touch</h1>',
-			"<p>You're creating the Getting Started app. This demonstrates how ",
+			'<a style="cursor:pointer" onclick="prueba()">click aqui</a>',
 			"to use tabs, lists and forms to create a simple app</p>",
 			'<h2>Sencha Touch (2.0.0)</h2>'
 		].join(""),
-        items: [
-           
-        ]
+		
+        items:[{
+						xtype:'button', 
+						text :'enviar',
+						ui:'Send',
+						handler:function(){
+							Ext.Ajax.request({
+								url: 'prueba.php',
+								headers: {
+        							"Content-Type": "text/plain"
+    							},
+								success: function(response) {
+									 Ext.Msg.alert(response.responseText);
+								},
+							
+								failure: function(response) {
+									 Ext.Msg.alert("Curses, something terrible happened");
+								}
+							});
+						}
+					}
+			]
     }
 });

@@ -38,8 +38,10 @@ Ext.application({
 
         // Initialize the main view
         Ext.Viewport.add(Ext.create('MyApp.view.Main'));
+		
+		
     },
-
+	
     onUpdated: function() {
         Ext.Msg.confirm(
             "Application Update",
